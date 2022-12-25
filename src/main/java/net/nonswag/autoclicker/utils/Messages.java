@@ -6,10 +6,10 @@ import net.nonswag.core.api.message.key.MessageKey;
 
 @FieldsAreNonnullByDefault
 public class Messages {
-    public static final MessageKey TITLE = new MessageKey("title");
-    public static final MessageKey START = new MessageKey("start");
-    public static final MessageKey STOP = new MessageKey("stop");
-    public static final MessageKey CLICK_INTERVAL = new MessageKey("click-interval");
+    public static final MessageKey TITLE = new MessageKey("title").register();
+    public static final MessageKey START = new MessageKey("start").register();
+    public static final MessageKey STOP = new MessageKey("stop").register();
+    public static final MessageKey CLICK_INTERVAL = new MessageKey("click-interval").register();
 
     public static void init() {
         initEnglish();
