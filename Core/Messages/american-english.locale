@@ -1,6 +1,7 @@
 # language -> American English
 # shorthand -> en_us
 click-interval=Click interval
+mode=Select the clicker mode you want to use
 start=Start
 stop=Stop
 title=Auto Clicker

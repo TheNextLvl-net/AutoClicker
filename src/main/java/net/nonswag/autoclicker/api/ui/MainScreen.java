@@ -11,16 +11,35 @@ import java.awt.*;
 @Getter
 @FieldsAreNonnullByDefault
 public class MainScreen {
-    private JLabel mouse, keyboard;
+    private JLabel mouse, keyboard, settings;
     private JPanel panel;
 
     public MainScreen() {
-        mouse.setIcon((Settings.getInstance().getTheme().isLight() ? Images.MOUSE_LIGHT : Images.MOUSE_DARK).getIcon());
-        keyboard.setIcon((Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK).getIcon());
-        panel.setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : Color.BLACK);
-        mouse.setOpaque(true);
-        keyboard.setOpaque(true);
-        mouse.setBackground(panel.getBackground());
-        keyboard.setBackground(panel.getBackground());
+        initPanel();
+        initMouse();
+        initKeyboard();
+        initSettings();
+    }
+
+    private void initPanel() {
+        panel.setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : new Color(20, 20, 20));
+    }
+
+    private void initMouse() {
+        init(mouse, Images.MOUSE);
+    }
+
+    private void initKeyboard() {
+        init(keyboard, Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK);
+    }
+
+    private void initSettings() {
+        init(settings, Images.SETTINGS);
+    }
+
+    private void init(JLabel label, Images image) {
+        label.setBackground(panel.getBackground());
+        label.setIcon(image.getIcon());
+        label.setOpaque(true);
     }
 }

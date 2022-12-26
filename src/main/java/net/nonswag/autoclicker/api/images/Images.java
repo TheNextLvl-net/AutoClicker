@@ -16,15 +16,14 @@ import java.io.InputStream;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public enum Images {
-    MOUSE_DARK("images/dark/mouse.png", 64),
-    MOUSE_LIGHT("images/light/mouse.png", 64),
-    KEYBOARD_DARK("images/dark/keyboard.png", 64),
+    MOUSE("images/mouse.png", 64),
     KEYBOARD_LIGHT("images/light/keyboard.png", 64),
-    SETTINGS_DARK("images/dark/settings.png", 64),
-    SETTINGS_LIGHT("images/light/settings.png", 64);
+    KEYBOARD_DARK("images/dark/keyboard.png", 64),
+    SETTINGS("images/settings.png", 64),
+    ICON("images/icon.png", 64);
 
     private final String location;
-    private final Icon icon;
+    private final ImageIcon icon;
     private final int size;
 
     Images(String location, int size) {
@@ -33,7 +32,7 @@ public enum Images {
         this.icon = loadIcon();
     }
 
-    private Icon loadIcon() throws IllegalStateException {
+    private ImageIcon loadIcon() throws IllegalStateException {
         InputStream resource = getClass().getClassLoader().getResourceAsStream(getLocation());
         if (resource != null) try {
             return new ImageIcon(ImageIO.read(resource).getScaledInstance(getSize(), getSize(), Image.SCALE_DEFAULT));

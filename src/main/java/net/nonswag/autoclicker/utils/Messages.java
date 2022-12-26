@@ -9,6 +9,7 @@ public class Messages {
     public static final MessageKey TITLE = new MessageKey("title").register();
     public static final MessageKey START = new MessageKey("start").register();
     public static final MessageKey STOP = new MessageKey("stop").register();
+    public static final MessageKey MODE = new MessageKey("mode").register();
     public static final MessageKey CLICK_INTERVAL = new MessageKey("click-interval").register();
 
     public static void init() {
@@ -20,6 +21,7 @@ public class Messages {
         Message.getEnglish().setDefault(TITLE, "Auto Clicker");
         Message.getEnglish().setDefault(START, "Start");
         Message.getEnglish().setDefault(STOP, "Stop");
+        Message.getEnglish().setDefault(MODE, "Select the clicker mode you want to use");
         Message.getEnglish().setDefault(CLICK_INTERVAL, "Click interval");
         Message.getEnglish().save();
     }
@@ -28,6 +30,7 @@ public class Messages {
         Message.getGerman().setDefault(TITLE, "Auto Klicker");
         Message.getGerman().setDefault(START, "Start");
         Message.getGerman().setDefault(STOP, "Stop");
+        Message.getGerman().setDefault(MODE, "Wähle den klicker Modus, den du nutzen möchtest.");
         Message.getGerman().setDefault(CLICK_INTERVAL, "Klick Intervall");
         Message.getGerman().save();
     }
