@@ -18,5 +18,9 @@ public class MainScreen {
         mouse.setIcon((Settings.getInstance().getTheme().isLight() ? Images.MOUSE_LIGHT : Images.MOUSE_DARK).getIcon());
         keyboard.setIcon((Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK).getIcon());
         panel.setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : Color.BLACK);
+        mouse.setOpaque(true);
+        keyboard.setOpaque(true);
+        mouse.setBackground(panel.getBackground());
+        keyboard.setBackground(panel.getBackground());
     }
 }
