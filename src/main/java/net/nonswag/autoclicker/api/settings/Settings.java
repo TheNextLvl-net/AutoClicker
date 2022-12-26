@@ -3,7 +3,6 @@ package net.nonswag.autoclicker.api.settings;
 import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
-import net.nonswag.autoclicker.api.ui.Theme;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 import net.nonswag.core.api.file.formats.JsonFile;
 import net.nonswag.core.api.language.Language;
@@ -18,8 +17,8 @@ import java.io.File;
 public class Settings extends JsonFile {
     @Getter
     private static final Settings instance = new Settings(".saves");
-    private Language language;
-    private Theme theme;
+    private Language language = Language.AMERICAN_ENGLISH;
+    private Theme theme = Theme.NIGHT;
 
     public Settings(String file) {
         this(new File(file));
@@ -32,6 +31,8 @@ public class Settings extends JsonFile {
     public Settings(File file) {
         super(file);
         JsonObject root = getJsonElement().getAsJsonObject();
+        if (!root.has("language")) root.addProperty("language", language.toString());
+        if (!root.has("theme")) root.addProperty("theme", theme.name());
         String[] split = root.get("language").getAsString().split(", ");
         language = new Language(split[0], split[1]);
         theme = Theme.valueOf(root.get("theme").getAsString());
