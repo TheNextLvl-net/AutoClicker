@@ -1,5 +1,7 @@
 package net.nonswag.autoclicker.api.ui;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
@@ -10,10 +12,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@Getter
+@Setter
 @FieldsAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class Screen {
+    private Dimension minimumSize = new Dimension(500, 300);
+    private Dimension preferredSize = getMinimumSize();
     public abstract JPanel getPanel();
+    private boolean resizable;
 
     protected void initPanel() {
         getPanel().setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : new Color(20, 20, 20));
@@ -44,17 +51,5 @@ public abstract class Screen {
                 if (MouseEvent.BUTTON1 == event.getButton()) runnable.run();
             }
         });
-    }
-
-    public boolean isResizable() {
-        return true;
-    }
-
-    public Dimension getMinimumSize() {
-        return new Dimension(500, 300);
-    }
-
-    public Dimension getPreferredSize() {
-        return getMinimumSize();
     }
 }
