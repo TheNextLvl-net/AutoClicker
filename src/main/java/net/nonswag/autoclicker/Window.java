@@ -13,12 +13,12 @@ public class Window {
     public static final JFrame FRAME = new JFrame(Messages.TITLE.message(Settings.getInstance().getLanguage()));
 
     static void init() {
-        FRAME.setLocationRelativeTo(null);
         FRAME.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         FRAME.setContentPane(new MainScreen().getPanel());
         FRAME.setPreferredSize(new Dimension(300, 200));
         FRAME.setResizable(false);
         FRAME.pack();
+        FRAME.setLocationRelativeTo(null);
         FRAME.setVisible(true);
     }
 }
