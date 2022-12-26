@@ -8,11 +8,13 @@ In this Project we make a Autoclicker with a giant amount of Features like Auto 
 This is the first look of the Main Screen
 
 - Light Theme
+
 ![alt text](https://cdn.discordapp.com/attachments/1055938958099484756/1056736122870431804/image.png)
 
 
 
 - Night Theme
+
 ![alt text](https://cdn.discordapp.com/attachments/1055938958099484756/1056736305779843162/image.png)
 
 And in the End here is a beta concept of this Autoclicker
