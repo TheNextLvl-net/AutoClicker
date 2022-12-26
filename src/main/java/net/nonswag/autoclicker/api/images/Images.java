@@ -16,6 +16,9 @@ import java.io.InputStream;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public enum Images {
+    POWER_ACTIVATE("images/power-activate.png", 64),
+    POWER_DEACTIVATE("images/power-deactivate.png", 64),
+    BACK("images/back.png", 32),
     MOUSE("images/mouse.png", 64),
     KEYBOARD_LIGHT("images/light/keyboard.png", 64),
     KEYBOARD_DARK("images/dark/keyboard.png", 64),
