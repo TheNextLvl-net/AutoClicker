@@ -21,5 +21,6 @@ And in the End here is a beta concept of this Autoclicker
 
 Warning it is a BETA Version of concept and not final
 
-Beta Concept
+- Beta Concept
+
 ![alt text](https://cdn.discordapp.com/attachments/1055938958099484756/1056737752277856328/image.png)
