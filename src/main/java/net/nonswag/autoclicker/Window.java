@@ -6,8 +6,11 @@ import net.nonswag.autoclicker.api.ui.MainScreen;
 import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Objects;
 
 @FieldsAreNonnullByDefault
 public class Window {

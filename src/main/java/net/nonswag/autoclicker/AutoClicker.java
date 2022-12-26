@@ -6,9 +6,9 @@ import net.nonswag.core.Core;
 
 public class AutoClicker {
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new ShutdownHook());
         Core.init();
         Messages.init();
         Window.init();
-        Runtime.getRuntime().addShutdownHook(new ShutdownHook());
     }
 }
