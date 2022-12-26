@@ -10,6 +10,8 @@ This is the first look of the Main Screen
 - Light Theme
 ![alt text](https://cdn.discordapp.com/attachments/1055938958099484756/1056736122870431804/image.png)
 
+
+
 - Night Theme
 ![alt text](https://cdn.discordapp.com/attachments/1055938958099484756/1056736305779843162/image.png)
 
