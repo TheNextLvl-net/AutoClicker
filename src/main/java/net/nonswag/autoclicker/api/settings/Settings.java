@@ -24,10 +24,6 @@ public class Settings extends JsonFile {
         this(new File(file));
     }
 
-    public Settings(String path, String file) {
-        this(new File(path, file));
-    }
-
     public Settings(File file) {
         super(file);
         JsonObject root = getJsonElement().getAsJsonObject();

@@ -37,4 +37,9 @@ public class MainScreen extends Screen {
     private void initSettings() {
         init(settings, Images.SETTINGS, () -> System.out.println("settings"));
     }
+
+    @Override
+    public boolean isResizable() {
+        return false;
+    }
 }
