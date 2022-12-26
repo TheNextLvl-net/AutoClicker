@@ -1,7 +1,11 @@
 # language -> German
 # shorthand -> de_de
+button-selection=Knopf auswahl
 click-interval=Klick Intervall
 mode=Wähle den klicker Modus, den du nutzen möchtest.
+mouse-button=Knopf %s
+press-keyboard-button=Drücke einen Tastaturknopf
+press-mouse-button=Drücke einen Mausknopf
 start=Start
 stop=Stop
 title=Auto Klicker

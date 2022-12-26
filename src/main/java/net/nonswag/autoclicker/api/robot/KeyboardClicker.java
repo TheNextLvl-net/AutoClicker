@@ -1,10 +1,14 @@
 package net.nonswag.autoclicker.api.robot;
 
-import java.awt.*;
-
 public class KeyboardClicker extends Clicker {
 
-    public KeyboardClicker() throws AWTException {
-        super(new Robot());
+    private KeyboardClicker() {
+        start();
+    }
+
+    @Override
+    protected void invokeClick() {
+        getRobot().keyPress(button());
+        getRobot().keyRelease(button());
     }
 }

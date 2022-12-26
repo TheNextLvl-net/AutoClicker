@@ -26,7 +26,7 @@ public class MainScreen extends Screen {
     }
 
     private void initMouse() {
-        init(mouse, Images.MOUSE, () -> Window.init(new MouseScreen()));
+        init(mouse, Images.MOUSE, () -> Window.init(MouseScreen.getInstance()));
     }
 
     private void initKeyboard() {

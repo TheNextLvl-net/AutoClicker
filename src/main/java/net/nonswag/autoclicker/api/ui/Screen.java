@@ -17,6 +17,21 @@ public abstract class Screen {
 
     protected void initPanel() {
         getPanel().setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : new Color(20, 20, 20));
+        getPanel().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent event) {
+                if (!getPanel().contains(event.getPoint())) return;
+                MouseScreen.getInstance().getClicker().canClick(false);
+                // TODO: 26.12.22 the same for the keyboard screen
+            }
+
+            @Override
+            public void mouseExited(MouseEvent event) {
+                if (getPanel().contains(event.getPoint())) return;
+                MouseScreen.getInstance().getClicker().canClick(true);
+                // TODO: 26.12.22 the same for the keyboard screen
+            }
+        });
     }
 
     protected void init(JLabel label, Images image, Runnable runnable) {

@@ -1,10 +1,14 @@
 package net.nonswag.autoclicker.api.robot;
 
-import java.awt.*;
-
 public class MouseClicker extends Clicker {
 
-    public MouseClicker() throws AWTException {
-        super(new Robot());
+    public MouseClicker() {
+        start();
+    }
+
+    @Override
+    protected void invokeClick() {
+        getRobot().mousePress(button());
+        getRobot().mouseRelease(button());
     }
 }

@@ -1,7 +1,11 @@
 # language -> American English
 # shorthand -> en_us
+button-selection=Button selection
 click-interval=Click interval
 mode=Select the clicker mode you want to use
+mouse-button=Button %s
+press-keyboard-button=Press a keyboard button
+press-mouse-button=Press a mouse button
 start=Start
 stop=Stop
 title=Auto Clicker

@@ -16,6 +16,7 @@ import java.io.InputStream;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public enum Images {
+    KEY_SELECTION("images/key-selection.png", 24),
     POWER_ACTIVATE("images/power-activate.png", 64),
     POWER_DEACTIVATE("images/power-deactivate.png", 64),
     BACK("images/back.png", 32),
