@@ -3,6 +3,7 @@ package net.nonswag.autoclicker;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.api.ui.MainScreen;
+import net.nonswag.autoclicker.api.ui.MouseScreen;
 import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 
@@ -19,7 +20,7 @@ public class Window {
     static void init() {
         FRAME.setIconImage(Images.ICON.getIcon().getImage());
         FRAME.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        FRAME.setContentPane(new MainScreen().getPanel());
+        FRAME.setContentPane(new MouseScreen().getPanel());
         FRAME.setResizable(false);
         Dimension size = FRAME.getPreferredSize();
         FRAME.setPreferredSize(new Dimension(size.width + 300, size.height + 200));
