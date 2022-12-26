@@ -1,0 +1,8 @@
+# language -> system
+# shorthand -> 
+log-debug=§8[§6%time% §8|§6 Debug §8| §6%thread%§8]
+log-error=§8[§4%time% §8|§4 Error §8| §4%thread%§8]
+log-info=§8[§1%time% §8|§1 Info §8| §1%thread%§8]
+log-tip=§8[§f%time% §8|§f Tip §8| §f%thread%§8]
+log-warn=§8[§e%time% §8|§e Warning §8| §e%thread%§8]
+prefix=§8[§f§lTNL§8]§r
