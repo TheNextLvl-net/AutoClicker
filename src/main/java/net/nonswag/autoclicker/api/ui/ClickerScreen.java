@@ -41,9 +41,9 @@ public abstract class ClickerScreen extends Screen {
 
     // calculates the interval in milliseconds based on the user input
     private long getInterval() {
-        return Math.min(maximum, TimeUnit.MINUTES.toMillis(((Number) minutes.getValue()).longValue()) +
+        return Math.max(1, Math.min(maximum, TimeUnit.MINUTES.toMillis(((Number) minutes.getValue()).longValue()) +
                 TimeUnit.SECONDS.toMillis(((Number) seconds.getValue()).longValue()) +
-                ((Number) milliseconds.getValue()).longValue());
+                ((Number) milliseconds.getValue()).longValue()));
     }
 
     private void initIntervalSpinner() {
@@ -57,12 +57,12 @@ public abstract class ClickerScreen extends Screen {
             if (!(spinner.getValue() instanceof Number)) return;
             long interval = getInterval();
             getClicker().interval(interval);
-            renderTime(interval);
+            renderInterval(interval);
         }));
     }
 
-    // renders the time from milliseconds back to the ui
-    private void renderTime(long interval) {
+    // renders the interval from milliseconds back to the ui
+    protected void renderInterval(long interval) {
         minutes.setValue(Math.max(0, Math.min(60, TimeUnit.MILLISECONDS.toMinutes(interval))));
         seconds.setValue(Math.max(0, TimeUnit.MILLISECONDS.toSeconds(interval) % 60));
         milliseconds.setValue(Math.max(0, interval % 1000));

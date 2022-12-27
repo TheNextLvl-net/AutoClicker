@@ -15,7 +15,7 @@ public abstract class Clicker extends Thread {
     private int button;
     @Range(from = 1)
     @Accessors(fluent = true)
-    private long interval = 1000;
+    private long interval = 5;
     private boolean running;
     @Accessors(fluent = true)
     private boolean canClick;

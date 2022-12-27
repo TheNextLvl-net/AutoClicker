@@ -20,6 +20,7 @@ public class MouseScreen extends ClickerScreen {
 
     private MouseScreen() {
         super(new MouseClicker());
+        renderInterval(getClicker().interval());
     }
 
     @Override
