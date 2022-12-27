@@ -4,7 +4,9 @@ import lombok.Getter;
 import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
+import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
+import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.swing.*;
@@ -12,6 +14,7 @@ import javax.swing.*;
 @Getter
 @FieldsAreNonnullByDefault
 @ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class MainScreen extends Screen {
     @Getter
     private static final MainScreen instance = new MainScreen();
@@ -36,5 +39,10 @@ public class MainScreen extends Screen {
 
     private void initSettings() {
         init(settings, Images.SETTINGS, () -> System.out.println("settings"));
+    }
+
+    @Override
+    public String getTitle() {
+        return Messages.TITLE.message(Settings.getInstance().getLanguage());
     }
 }

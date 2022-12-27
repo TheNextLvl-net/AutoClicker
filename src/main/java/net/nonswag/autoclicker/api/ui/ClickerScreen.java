@@ -35,6 +35,7 @@ public abstract class ClickerScreen extends Screen {
 
     private void initIntervalPanel() {
         interval.setBackground(panel.getBackground());
+        interval.setVisible(false);
     }
 
     // calculates the interval in milliseconds based on the user input
@@ -76,8 +77,15 @@ public abstract class ClickerScreen extends Screen {
             clicker.setRunning(!clicker.isRunning());
             if (clicker.isRunning()) power.setIcon(Images.POWER_DEACTIVATE.getIcon());
             else power.setIcon(Images.POWER_ACTIVATE.getIcon());
+            updateInterval();
         });
         power.setVisible(false);
+    }
+
+    private void updateInterval() {
+        minutes.setVisible(!clicker.isRunning());
+        seconds.setVisible(minutes.isVisible());
+        milliseconds.setVisible(seconds.isVisible());
     }
 
     protected abstract void initKeyButton();

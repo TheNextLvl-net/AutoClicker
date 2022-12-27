@@ -29,14 +29,14 @@ public abstract class Screen {
             public void mouseEntered(MouseEvent event) {
                 if (!getPanel().contains(event.getPoint())) return;
                 MouseScreen.getInstance().getClicker().canClick(false);
-                // TODO: 26.12.22 the same for the keyboard screen
+                KeyboardScreen.getInstance().getClicker().canClick(false);
             }
 
             @Override
             public void mouseExited(MouseEvent event) {
                 if (getPanel().contains(event.getPoint())) return;
                 MouseScreen.getInstance().getClicker().canClick(true);
-                // TODO: 26.12.22 the same for the keyboard screen
+                KeyboardScreen.getInstance().getClicker().canClick(true);
             }
         });
     }
@@ -52,4 +52,6 @@ public abstract class Screen {
             }
         });
     }
+
+    public abstract String getTitle();
 }

@@ -37,12 +37,17 @@ public class MouseScreen extends ClickerScreen {
                     Language language = Settings.getInstance().getLanguage();
                     key.setText(Messages.BUTTON.message(language).formatted(event.getButton()));
                     key.removeMouseListener(this);
-                    power.setVisible(true);
                     interval.setVisible(true);
+                    power.setVisible(true);
                     locked = false;
                 }
             });
             locked = true;
         });
+    }
+
+    @Override
+    public String getTitle() {
+        return Messages.MOUSE_TITLE.message(Settings.getInstance().getLanguage());
     }
 }
