@@ -6,25 +6,20 @@ import lombok.RequiredArgsConstructor;
 import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
-import net.nonswag.autoclicker.api.settings.Settings;
-import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
-import net.nonswag.core.api.language.Language;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 @Getter
 @FieldsAreNonnullByDefault
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class ClickerScreen extends Screen {
-    private final Clicker clicker;
-    private JLabel power, back, key;
-    private JPanel panel;
-    private boolean locked;
+    protected final Clicker clicker;
+    protected JLabel power, back, key;
+    protected JPanel panel;
+    protected boolean locked;
 
     {
         initPanel();
@@ -47,24 +42,5 @@ public abstract class ClickerScreen extends Screen {
         power.setVisible(false);
     }
 
-    private void initKeyButton() {
-        key.setText(Messages.BUTTON_SELECTION.message(Settings.getInstance().getLanguage()));
-        init(key, Images.KEY_SELECTION, () -> {
-            if (locked) return;
-            power.setVisible(false);
-            key.setText(Messages.PRESS_MOUSE_BUTTON.message(Settings.getInstance().getLanguage()));
-            key.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent event) {
-                    getClicker().button(event.getModifiersEx());
-                    Language language = Settings.getInstance().getLanguage();
-                    key.setText(Messages.MOUSE_BUTTON.message(language).formatted(event.getButton()));
-                    key.removeMouseListener(this);
-                    power.setVisible(true);
-                    locked = false;
-                }
-            });
-            locked = true;
-        });
-    }
+    protected abstract void initKeyButton();
 }
