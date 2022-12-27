@@ -26,7 +26,7 @@ public class Window {
 
     private static JFrame getOrCreateFrame() {
         if (frame != null) return frame;
-        frame = new JFrame(Messages.TITLE.message(Settings.getInstance().getLanguage()));
+        JFrame frame = new JFrame(Messages.TITLE.message(Settings.getInstance().getLanguage()));
         frame.setIconImage(Images.ICON.getIcon().getImage());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         return frame;
