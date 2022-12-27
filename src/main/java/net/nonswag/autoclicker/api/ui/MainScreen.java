@@ -31,7 +31,7 @@ public class MainScreen extends Screen {
 
     private void initKeyboard() {
         Images image = Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK;
-        init(keyboard, image, () -> System.out.println("keyboard"));
+        init(keyboard, image, () -> Window.init(KeyboardScreen.getInstance()));
     }
 
     private void initSettings() {

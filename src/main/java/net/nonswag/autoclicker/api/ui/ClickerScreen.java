@@ -1,8 +1,6 @@
 package net.nonswag.autoclicker.api.ui;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
@@ -15,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 @Getter
 @FieldsAreNonnullByDefault
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class ClickerScreen extends Screen {
     protected JSpinner milliseconds, seconds, minutes;
     protected JLabel power, back, key;
@@ -26,7 +23,8 @@ public abstract class ClickerScreen extends Screen {
     // Maximum interval of 60 minutes (in milliseconds)
     private final long maximum = TimeUnit.MINUTES.toMillis(60);
 
-    {
+    protected ClickerScreen(Clicker clicker) {
+        renderInterval((this.clicker = clicker).interval());
         initPanel();
         initIntervalPanel();
         initIntervalSpinner();

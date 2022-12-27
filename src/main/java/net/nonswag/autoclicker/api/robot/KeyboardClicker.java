@@ -2,7 +2,7 @@ package net.nonswag.autoclicker.api.robot;
 
 public class KeyboardClicker extends Clicker {
 
-    private KeyboardClicker() {
+    public KeyboardClicker() {
         start();
     }
 

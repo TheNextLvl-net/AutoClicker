@@ -2,24 +2,24 @@ package net.nonswag.autoclicker.api.ui;
 
 import lombok.Getter;
 import net.nonswag.autoclicker.api.images.Images;
-import net.nonswag.autoclicker.api.robot.MouseClicker;
+import net.nonswag.autoclicker.api.robot.KeyboardClicker;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
 import net.nonswag.core.api.language.Language;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 @FieldsAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class MouseScreen extends ClickerScreen {
+public class KeyboardScreen extends ClickerScreen{
     @Getter
-    private static final MouseScreen instance = new MouseScreen();
+    private static final KeyboardScreen instance = new KeyboardScreen();
 
-    private MouseScreen() {
-        super(new MouseClicker());
+    protected KeyboardScreen() {
+        super(new KeyboardClicker());
     }
 
     @Override
@@ -29,14 +29,14 @@ public class MouseScreen extends ClickerScreen {
             if (locked) return;
             power.setVisible(false);
             interval.setVisible(false);
-            key.setText(Messages.PRESS_MOUSE_BUTTON.message(Settings.getInstance().getLanguage()));
-            key.addMouseListener(new MouseAdapter() {
+            key.setText(Messages.PRESS_KEYBOARD_BUTTON.message(Settings.getInstance().getLanguage()));
+            key.addKeyListener(new KeyAdapter() {
                 @Override
-                public void mousePressed(MouseEvent event) {
+                public void keyPressed(KeyEvent event) {
                     getClicker().button(event.getModifiersEx());
                     Language language = Settings.getInstance().getLanguage();
-                    key.setText(Messages.BUTTON.message(language).formatted(event.getButton()));
-                    key.removeMouseListener(this);
+                    key.setText(Messages.BUTTON.message(language).formatted(event.getKeyCode()));
+                    key.removeKeyListener(this);
                     power.setVisible(true);
                     interval.setVisible(true);
                     locked = false;

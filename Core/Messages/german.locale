@@ -1,5 +1,6 @@
 # language -> German
 # shorthand -> de_de
+button=Taste %s
 button-selection=Knopf auswahl
 click-interval=Klick Intervall
 mode=Wähle den klicker Modus, den du nutzen möchtest.

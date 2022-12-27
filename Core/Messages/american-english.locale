@@ -1,5 +1,6 @@
 # language -> American English
 # shorthand -> en_us
+button=Button %s
 button-selection=Button selection
 click-interval=Click interval
 mode=Select the clicker mode you want to use
