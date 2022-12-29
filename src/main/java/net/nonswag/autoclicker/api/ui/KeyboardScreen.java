@@ -36,6 +36,8 @@ public class KeyboardScreen extends ClickerScreen {
                 public void keyPressed(KeyEvent event) {
                     getClicker().button(event.getKeyCode());
                     Language language = Settings.getInstance().getLanguage();
+                    System.out.println((int) event.getKeyChar());
+                    System.out.println(KeyEvent.CHAR_UNDEFINED);
                     key.setText(Messages.BUTTON.message(language).formatted(event.getKeyChar()));
                     key.removeKeyListener(this);
                     interval.setVisible(true);

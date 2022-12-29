@@ -7,7 +7,6 @@ import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
-import net.nonswag.core.api.language.Language;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,8 +33,7 @@ public class MouseScreen extends ClickerScreen {
                 @Override
                 public void mousePressed(MouseEvent event) {
                     getClicker().button(event.getModifiersEx());
-                    Language language = Settings.getInstance().getLanguage();
-                    key.setText(Messages.BUTTON.message(language).formatted(event.getButton()));
+                    key.setText(Messages.mouseButton(Settings.getInstance().getLanguage(), event.getButton()));
                     key.removeMouseListener(this);
                     interval.setVisible(true);
                     power.setVisible(true);
