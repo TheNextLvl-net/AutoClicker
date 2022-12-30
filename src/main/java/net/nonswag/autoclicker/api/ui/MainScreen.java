@@ -36,6 +36,12 @@ public class MainScreen extends Screen {
     }
 
     @Override
+    protected void updateAppearance() {
+        super.updateAppearance();
+        initKeyboard();
+    }
+
+    @Override
     public String getTitle() {
         return Messages.TITLE.message(Settings.getInstance().getLanguage());
     }

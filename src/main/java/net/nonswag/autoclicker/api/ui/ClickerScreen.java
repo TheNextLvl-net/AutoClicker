@@ -1,13 +1,10 @@
 package net.nonswag.autoclicker.api.ui;
 
 import lombok.Getter;
-import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import java.util.concurrent.TimeUnit;
 
 @Getter
@@ -26,7 +23,7 @@ public abstract class ClickerScreen extends Screen {
         initPanel();
         initIntervalPanel();
         initIntervalSpinner();
-        initBackButton();
+        initBackButton(back);
         initPowerButton();
         initKeyButton();
     }
@@ -63,11 +60,6 @@ public abstract class ClickerScreen extends Screen {
         minutes.setValue(Math.max(0, Math.min(60, TimeUnit.MILLISECONDS.toMinutes(interval))));
         seconds.setValue(Math.max(0, TimeUnit.MILLISECONDS.toSeconds(interval) % 60));
         milliseconds.setValue(Math.max(0, interval % 1000));
-    }
-
-    private void initBackButton() {
-        init(back, Images.BACK, () -> Window.init(MainScreen.getInstance()));
-        back.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new EmptyBorder(10, 10, 10, 10)));
     }
 
     private void initPowerButton() {

@@ -24,6 +24,8 @@ public enum Images {
     KEYBOARD_LIGHT("images/light/keyboard.png", 64),
     KEYBOARD_DARK("images/dark/keyboard.png", 64),
     SETTINGS("images/settings.png", 64),
+    INDICATOR_LIGHT("images/light/indicator.png", 48),
+    INDICATOR_DARK("images/dark/indicator.png", 48),
     ICON("images/icon.png", 64);
 
     private final String location;

@@ -2,10 +2,13 @@ package net.nonswag.autoclicker.api.ui;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,7 +22,7 @@ public abstract class Screen {
     private boolean resizable;
 
     protected void initPanel() {
-        getPanel().setBackground(Settings.getInstance().getTheme().isLight() ? Color.WHITE : new Color(20, 20, 20));
+        updateAppearance();
         getPanel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent event) {
@@ -37,6 +40,11 @@ public abstract class Screen {
         });
     }
 
+    protected void initBackButton(JLabel label) {
+        init(label, Images.BACK, () -> Window.init(MainScreen.getInstance()));
+        label.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new EmptyBorder(10, 10, 10, 10)));
+    }
+
     protected void init(JLabel label, Images image, Runnable runnable) {
         label.setBackground(getPanel().getBackground());
         label.setIcon(image.getIcon());
@@ -47,6 +55,11 @@ public abstract class Screen {
                 if (MouseEvent.BUTTON1 == event.getButton()) runnable.run();
             }
         });
+    }
+
+    protected void updateAppearance() {
+        getPanel().setBackground(Settings.getInstance().getTheme().getColor());
+        for (Component component : getPanel().getComponents()) component.setBackground(getPanel().getBackground());
     }
 
     public abstract String getTitle();

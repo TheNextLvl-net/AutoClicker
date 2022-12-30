@@ -1,6 +1,7 @@
 package net.nonswag.autoclicker.api.ui;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.KeyboardClicker;
 import net.nonswag.autoclicker.api.settings.Settings;
@@ -10,9 +11,10 @@ import net.nonswag.core.api.language.Language;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class KeyboardScreen extends ClickerScreen {
+public class KeyboardScreen extends ClickerScreen implements Cloneable {
     @Getter
-    private static final KeyboardScreen instance = new KeyboardScreen();
+    @Setter
+    private static KeyboardScreen instance = new KeyboardScreen();
 
     private KeyboardScreen() {
         super(new KeyboardClicker());
@@ -30,10 +32,9 @@ public class KeyboardScreen extends ClickerScreen {
             key.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent event) {
+                    if (KeyEvent.CHAR_UNDEFINED == event.getKeyChar()) return;
                     getClicker().button(event.getKeyCode());
                     Language language = Settings.getInstance().getLanguage();
-                    System.out.println((int) event.getKeyChar());
-                    System.out.println(KeyEvent.CHAR_UNDEFINED);
                     key.setText(Messages.BUTTON.message(language).formatted(event.getKeyChar()));
                     key.removeKeyListener(this);
                     interval.setVisible(true);
@@ -48,5 +49,16 @@ public class KeyboardScreen extends ClickerScreen {
     @Override
     public String getTitle() {
         return Messages.KEYBOARD_TITLE.message(Settings.getInstance().getLanguage());
+    }
+
+    @Override
+    public KeyboardScreen clone() {
+        try {
+            KeyboardScreen clone = (KeyboardScreen) super.clone();
+            clone.initPanel();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
