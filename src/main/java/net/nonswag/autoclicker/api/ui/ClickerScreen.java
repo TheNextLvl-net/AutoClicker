@@ -4,7 +4,6 @@ import lombok.Getter;
 import net.nonswag.autoclicker.Window;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
-import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -12,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import java.util.concurrent.TimeUnit;
 
 @Getter
-@FieldsAreNonnullByDefault
 public abstract class ClickerScreen extends Screen {
     protected JSpinner milliseconds, seconds, minutes;
     protected JLabel power, back, key;

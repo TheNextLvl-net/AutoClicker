@@ -5,15 +5,11 @@ import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.KeyboardClicker;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
-import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
-import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
 import net.nonswag.core.api.language.Language;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-@FieldsAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class KeyboardScreen extends ClickerScreen {
     @Getter
     private static final KeyboardScreen instance = new KeyboardScreen();

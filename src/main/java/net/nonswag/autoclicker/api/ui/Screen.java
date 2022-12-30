@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
-import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
-import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +12,6 @@ import java.awt.event.MouseEvent;
 
 @Getter
 @Setter
-@FieldsAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public abstract class Screen {
     private Dimension minimumSize = new Dimension(500, 300);
     private Dimension preferredSize = getMinimumSize();

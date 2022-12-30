@@ -5,14 +5,10 @@ import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.MouseClicker;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
-import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
-import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-@FieldsAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class MouseScreen extends ClickerScreen {
     @Getter
     private static final MouseScreen instance = new MouseScreen();
