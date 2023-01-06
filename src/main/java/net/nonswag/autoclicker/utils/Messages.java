@@ -19,10 +19,19 @@ public class Messages {
     public static final MessageKey START = new MessageKey("start").register();
     public static final MessageKey STOP = new MessageKey("stop").register();
     public static final MessageKey MODE = new MessageKey("mode").register();
+    public static final MessageKey LIGHT = new MessageKey("light").register();
+    public static final MessageKey NIGHT = new MessageKey("night").register();
     public static final MessageKey BUTTON = new MessageKey("button").register();
+    public static final MessageKey ACTIVE = new MessageKey("active").register();
+    public static final MessageKey INACTIVE = new MessageKey("inactive").register();
+    public static final MessageKey LANGUAGE = new MessageKey("language").register();
+    public static final MessageKey SETTINGS = new MessageKey("settings").register();
+    public static final MessageKey APPEARANCE = new MessageKey("appearance").register();
     public static final MessageKey MOUSE_TITLE = new MessageKey("mouse-title").register();
+    public static final MessageKey ALWAYS_ON_TOP = new MessageKey("always-on-top").register();
     public static final MessageKey KEYBOARD_TITLE = new MessageKey("keyboard-title").register();
     public static final MessageKey SETTINGS_TITLE = new MessageKey("settings-title").register();
+    public static final MessageKey LANGUAGE_TITLE = new MessageKey("language-title").register();
     public static final MessageKey CLICK_INTERVAL = new MessageKey("click-interval").register();
     public static final MessageKey BUTTON_SELECTION = new MessageKey("button-selection").register();
     public static final MessageKey PRESS_MOUSE_BUTTON = new MessageKey("press-mouse-button").register();
@@ -41,14 +50,23 @@ public class Messages {
     }
 
     private static void initEnglish() {
-        ENGLISH.setDefault(TITLE, "Auto Clicker");
+        ENGLISH.setDefault(TITLE, "Main menu");
         ENGLISH.setDefault(START, "Start");
         ENGLISH.setDefault(STOP, "Stop");
         ENGLISH.setDefault(MODE, "Select the clicker mode you want to use");
+        ENGLISH.setDefault(LIGHT, "Light");
+        ENGLISH.setDefault(NIGHT, "Night");
         ENGLISH.setDefault(BUTTON, "Button %s");
+        ENGLISH.setDefault(ACTIVE, "Active");
+        ENGLISH.setDefault(INACTIVE, "Inactive");
+        ENGLISH.setDefault(LANGUAGE, "Language");
+        ENGLISH.setDefault(SETTINGS, "Settings");
+        ENGLISH.setDefault(APPEARANCE, "Appearance");
         ENGLISH.setDefault(MOUSE_TITLE, "Mouse - Auto Clicker");
+        ENGLISH.setDefault(ALWAYS_ON_TOP, "Always on top");
         ENGLISH.setDefault(KEYBOARD_TITLE, "Keyboard - Auto Clicker");
-        ENGLISH.setDefault(SETTINGS_TITLE, "Settings - Auto Clicker");
+        ENGLISH.setDefault(LANGUAGE_TITLE, "Select a language");
+        ENGLISH.setDefault(SETTINGS_TITLE, "Settings");
         ENGLISH.setDefault(CLICK_INTERVAL, "Click interval");
         ENGLISH.setDefault(BUTTON_SELECTION, "Button selection");
         ENGLISH.setDefault(PRESS_MOUSE_BUTTON, "Press a mouse button");
@@ -64,13 +82,22 @@ public class Messages {
     }
 
     private static void initGerman() {
-        GERMAN.setDefault(TITLE, "Auto Klicker");
+        GERMAN.setDefault(TITLE, "Hauptmenü");
         GERMAN.setDefault(START, "Start");
         GERMAN.setDefault(STOP, "Stop");
         GERMAN.setDefault(MODE, "Wähle den klicker Modus, den du nutzen möchtest.");
+        GERMAN.setDefault(LIGHT, "Hell");
+        GERMAN.setDefault(NIGHT, "Dunkel");
         GERMAN.setDefault(BUTTON, "Taste %s");
+        GERMAN.setDefault(ACTIVE, "Aktiv");
+        GERMAN.setDefault(INACTIVE, "Inaktiv");
+        GERMAN.setDefault(LANGUAGE, "Sprache");
+        GERMAN.setDefault(SETTINGS, "Einstellungen");
+        GERMAN.setDefault(APPEARANCE, "Aussehen");
         GERMAN.setDefault(MOUSE_TITLE, "Maus - Auto Klicker");
+        GERMAN.setDefault(ALWAYS_ON_TOP, "Immer im fokus");
         GERMAN.setDefault(KEYBOARD_TITLE, "Tastatur - Auto Klicker");
+        GERMAN.setDefault(LANGUAGE_TITLE, "Sprache");
         GERMAN.setDefault(SETTINGS_TITLE, "Einstellungen - Auto Klicker");
         GERMAN.setDefault(CLICK_INTERVAL, "Klick Intervall");
         GERMAN.setDefault(BUTTON_SELECTION, "Tasten auswahl");

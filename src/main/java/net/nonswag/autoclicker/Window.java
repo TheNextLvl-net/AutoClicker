@@ -1,6 +1,7 @@
 package net.nonswag.autoclicker;
 
 import net.nonswag.autoclicker.api.images.Images;
+import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.api.ui.Screen;
 import net.nonswag.core.api.annotation.FieldsAreNullableByDefault;
 
@@ -28,6 +29,11 @@ public class Window {
         JFrame frame = new JFrame();
         frame.setIconImage(Images.ICON.getIcon().getImage());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setAlwaysOnTop(Settings.getInstance().isAlwaysOnTop());
         return frame;
+    }
+
+    public static void setAlwaysOnTop(boolean alwaysOnTop) {
+        if (frame != null) frame.setAlwaysOnTop(alwaysOnTop);
     }
 }

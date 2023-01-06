@@ -20,7 +20,7 @@ public class MouseScreen extends ClickerScreen {
     @Override
     protected void initKeyButton() {
         key.setText(Messages.BUTTON_SELECTION.message(Settings.getInstance().getLanguage()));
-        init(key, Images.KEY_SELECTION, () -> {
+        init(key, Images.MOUSE_SELECTION, () -> {
             if (locked) return;
             power.setVisible(false);
             interval.setVisible(false);

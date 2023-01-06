@@ -17,6 +17,7 @@ import java.io.InputStream;
 @MethodsReturnNonnullByDefault
 public enum Images {
     KEY_SELECTION("images/key-selection.png", 24),
+    MOUSE_SELECTION("images/mouse-selection.png", 25),
     POWER_ACTIVATE("images/power-activate.png", 64),
     POWER_DEACTIVATE("images/power-deactivate.png", 64),
     BACK("images/back.png", 32),
@@ -26,6 +27,9 @@ public enum Images {
     SETTINGS("images/settings.png", 64),
     INDICATOR_LIGHT("images/light/indicator.png", 48),
     INDICATOR_DARK("images/dark/indicator.png", 48),
+    LANGUAGE("images/language.png", 48),
+    ARROW_UP("images/arrow-down.png", 48),
+    ARROW_DOWN("images/arrow-up.png", 48),
     ICON("images/icon.png", 64);
 
     private final String location;

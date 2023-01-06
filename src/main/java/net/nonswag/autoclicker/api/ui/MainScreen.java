@@ -14,6 +14,7 @@ public class MainScreen extends Screen {
     private static final MainScreen instance = new MainScreen();
     private JLabel mouse, keyboard, settings;
     private JPanel panel;
+    private JLabel message;
 
     private MainScreen() {
         initPanel();
@@ -23,15 +24,18 @@ public class MainScreen extends Screen {
     }
 
     private void initMouse() {
+        hoverMessage(mouse, message, Messages.MOUSE_TITLE);
         init(mouse, Images.MOUSE, () -> Window.init(MouseScreen.getInstance()));
     }
 
     private void initKeyboard() {
+        hoverMessage(keyboard, message, Messages.KEYBOARD_TITLE);
         Images image = Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK;
         init(keyboard, image, () -> Window.init(KeyboardScreen.getInstance()));
     }
 
     private void initSettings() {
+        hoverMessage(settings, message, Messages.SETTINGS);
         init(settings, Images.SETTINGS, () -> Window.init(SettingsScreen.getInstance()));
     }
 

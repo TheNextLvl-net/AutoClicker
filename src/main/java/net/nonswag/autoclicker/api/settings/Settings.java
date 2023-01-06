@@ -19,6 +19,7 @@ public class Settings extends JsonFile {
     private static final Settings instance = new Settings(".saves");
     private Language language = Language.AMERICAN_ENGLISH;
     private Theme theme = Theme.NIGHT;
+    private boolean alwaysOnTop = true;
 
     public Settings(String file) {
         this(new File(file));
@@ -26,19 +27,21 @@ public class Settings extends JsonFile {
 
     public Settings(File file) {
         super(file);
-        JsonObject root = getJsonElement().getAsJsonObject();
+        JsonObject root = getRoot().getAsJsonObject();
         if (!root.has("language")) root.addProperty("language", language.toString());
         if (!root.has("theme")) root.addProperty("theme", theme.name());
+        if (!root.has("always-on-top")) root.addProperty("always-on-top", alwaysOnTop);
         String[] split = root.get("language").getAsString().split(", ");
         language = new Language(split[0], split[1]);
         theme = Theme.valueOf(root.get("theme").getAsString());
+        alwaysOnTop = root.get("always-on-top").getAsBoolean();
     }
 
     public void export() {
         JsonObject root = new JsonObject();
         root.addProperty("language", getLanguage().toString());
         root.addProperty("theme", getTheme().name());
-        setJsonElement(root);
-        save();
+        root.addProperty("always-on-top", isAlwaysOnTop());
+        setRoot(root).save();
     }
 }

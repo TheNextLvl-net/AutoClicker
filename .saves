@@ -1,4 +1,5 @@
 {
   "language": "American English, en_us",
-  "theme": "NIGHT"
+  "theme": "NIGHT",
+  "always-on-top": true
 }
