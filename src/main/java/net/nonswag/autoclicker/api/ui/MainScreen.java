@@ -7,14 +7,14 @@ import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
 
 import javax.swing.*;
+import java.awt.event.MouseListener;
 
 @Getter
 public class MainScreen extends Screen {
     @Getter
     private static final MainScreen instance = new MainScreen();
-    private JLabel mouse, keyboard, settings;
+    private JLabel mouse, keyboard, settings, message;
     private JPanel panel;
-    private JLabel message;
 
     private MainScreen() {
         initPanel();
@@ -29,6 +29,7 @@ public class MainScreen extends Screen {
     }
 
     private void initKeyboard() {
+        for (MouseListener listener : keyboard.getMouseListeners()) keyboard.removeMouseListener(listener);
         hoverMessage(keyboard, message, Messages.KEYBOARD_TITLE);
         Images image = Settings.getInstance().getTheme().isLight() ? Images.KEYBOARD_LIGHT : Images.KEYBOARD_DARK;
         init(keyboard, image, () -> Window.init(KeyboardScreen.getInstance()));

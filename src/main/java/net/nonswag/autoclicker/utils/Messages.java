@@ -65,7 +65,7 @@ public class Messages {
         ENGLISH.setDefault(MOUSE_TITLE, "Mouse - Auto Clicker");
         ENGLISH.setDefault(ALWAYS_ON_TOP, "Always on top");
         ENGLISH.setDefault(KEYBOARD_TITLE, "Keyboard - Auto Clicker");
-        ENGLISH.setDefault(LANGUAGE_TITLE, "Select a language");
+        ENGLISH.setDefault(LANGUAGE_TITLE, "Settings - Language");
         ENGLISH.setDefault(SETTINGS_TITLE, "Settings");
         ENGLISH.setDefault(CLICK_INTERVAL, "Click interval");
         ENGLISH.setDefault(BUTTON_SELECTION, "Button selection");
@@ -97,8 +97,8 @@ public class Messages {
         GERMAN.setDefault(MOUSE_TITLE, "Maus - Auto Klicker");
         GERMAN.setDefault(ALWAYS_ON_TOP, "Immer im fokus");
         GERMAN.setDefault(KEYBOARD_TITLE, "Tastatur - Auto Klicker");
-        GERMAN.setDefault(LANGUAGE_TITLE, "Sprache");
-        GERMAN.setDefault(SETTINGS_TITLE, "Einstellungen - Auto Klicker");
+        GERMAN.setDefault(LANGUAGE_TITLE, "Einstellungen - Sprache");
+        GERMAN.setDefault(SETTINGS_TITLE, "Einstellungen");
         GERMAN.setDefault(CLICK_INTERVAL, "Klick Intervall");
         GERMAN.setDefault(BUTTON_SELECTION, "Tasten auswahl");
         GERMAN.setDefault(PRESS_MOUSE_BUTTON, "Drücke einen Maustaste");
@@ -118,8 +118,8 @@ public class Messages {
             case 1 -> LEFT_CLICK.message(language);
             case 3 -> RIGHT_CLICK.message(language);
             case 2 -> MIDDLE_CLICK.message(language);
-            case 6 -> BACKWARD.message(language);
-            case 7 -> FORWARD.message(language);
+            case 4, 6 -> BACKWARD.message(language);
+            case 5, 7 -> FORWARD.message(language);
             default -> BUTTON.message(language).formatted(id);
         };
     }

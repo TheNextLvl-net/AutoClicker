@@ -3,7 +3,9 @@ package net.nonswag.autoclicker.api.images;
 import lombok.Getter;
 import net.nonswag.core.api.annotation.FieldsAreNonnullByDefault;
 import net.nonswag.core.api.annotation.MethodsReturnNonnullByDefault;
+import net.nonswag.core.api.language.Language;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,6 +18,9 @@ import java.io.InputStream;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public enum Images {
+    AMERICAN_ENGLISH("images/flags/america.png", 24),
+    GERMAN("images/flags/germany.png", 24),
+
     KEY_SELECTION("images/key-selection.png", 24),
     MOUSE_SELECTION("images/mouse-selection.png", 25),
     POWER_ACTIVATE("images/power-activate.png", 64),
@@ -50,5 +55,14 @@ public enum Images {
             throw new IllegalStateException(e);
         }
         else throw new IllegalStateException("resource not found: " + getLocation());
+    }
+
+    @Nullable
+    public static ImageIcon getFlag(Language language) {
+        try {
+            return valueOf(language.name().toUpperCase().replace(" ", "_")).getIcon();
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 }

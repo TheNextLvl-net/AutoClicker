@@ -47,7 +47,7 @@ public abstract class Screen {
     }
 
     protected void initBackButton(JLabel label, Screen screen) {
-        init(label, Images.BACK, () -> Window.init(screen));
+        init(label, Images.BACK, () -> Window.init(screen, false));
         label.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new EmptyBorder(10, 10, 10, 10)));
     }
 
@@ -64,17 +64,7 @@ public abstract class Screen {
     }
 
     protected void hoverMessage(JLabel label, JLabel messageLabel, MessageKey message) {
-        hoverMessage(label, messageLabel, null, message, (MessageKey) null);
-    }
-
-    protected void hoverMessage(JLabel label, JLabel messageLabel, @Nullable JLabel valueLabel, MessageKey message, @Nullable String value) {
-        label.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent event) {
-                messageLabel.setText(message.message(Settings.getInstance().getLanguage()));
-                if (valueLabel != null && value != null) valueLabel.setText(value);
-            }
-        });
+        hoverMessage(label, messageLabel, null, message, null);
     }
 
     protected void hoverMessage(JLabel label, JLabel messageLabel, @Nullable JLabel valueLabel, MessageKey message, @Nullable MessageKey value) {
@@ -94,4 +84,9 @@ public abstract class Screen {
     }
 
     public abstract String getTitle();
+
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 }

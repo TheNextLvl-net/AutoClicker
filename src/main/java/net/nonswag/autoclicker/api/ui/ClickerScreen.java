@@ -4,7 +4,10 @@ import lombok.Getter;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicSpinnerUI;
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 @Getter
@@ -47,12 +50,34 @@ public abstract class ClickerScreen extends Screen {
     }
 
     private void initSpinner(JSpinner spinner) {
+        spinner.setModel(new SpinnerNumberModel());
+        for (Component component : spinner.getEditor().getComponents()) {
+            component.setBackground(panel.getBackground());
+        }
+        spinner.setUI(new BasicSpinnerUI() {
+            @Override
+            @Nullable
+            protected Component createNextButton() {
+                return null;
+            }
+
+            @Override
+            @Nullable
+            protected Component createPreviousButton() {
+                return null;
+            }
+        });
+        spinner.setBorder(null);
         spinner.addChangeListener(event -> SwingUtilities.invokeLater(() -> {
             if (!(spinner.getValue() instanceof Number)) return;
             long interval = getInterval();
             getClicker().interval(interval);
             renderInterval(interval);
         }));
+        spinner.addMouseWheelListener(event -> {
+            if (!(spinner.getValue() instanceof Number value)) return;
+            spinner.setValue(value.longValue() - event.getUnitsToScroll());
+        });
     }
 
     // renders the interval from milliseconds back to the ui

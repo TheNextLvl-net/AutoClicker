@@ -6,9 +6,10 @@ import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.api.settings.Theme;
 import net.nonswag.autoclicker.utils.Messages;
-import net.nonswag.core.api.language.Language;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import static net.nonswag.autoclicker.utils.Messages.*;
@@ -30,12 +31,18 @@ public class SettingsScreen extends Screen {
        initBackButton(back);
        initAppearance(Settings.getInstance().getTheme());
        initAlwaysOnTop(Settings.getInstance().isAlwaysOnTop());
-       initLanguage(Settings.getInstance().getLanguage());
+       initLanguage();
     }
 
-    private void initLanguage(Language language) {
-        hoverMessage(this.language, message, value, LANGUAGE, language.name());
+    private void initLanguage() {
         init(this.language, Images.LANGUAGE, () -> Window.init(LanguageScreen.getInstance()));
+        this.language.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent event) {
+                message.setText(LANGUAGE.message(Settings.getInstance().getLanguage()));
+                value.setText(Settings.getInstance().getLanguage().name());
+            }
+        });
     }
 
     private void initAlwaysOnTop(boolean alwaysOnTop) {
@@ -56,6 +63,7 @@ public class SettingsScreen extends Screen {
             for (MouseListener listener : appearance.getMouseListeners()) appearance.removeMouseListener(listener);
             Settings.getInstance().setTheme(theme.isLight() ? Theme.NIGHT : Theme.LIGHT);
             initAppearance(Settings.getInstance().getTheme());
+            LanguageScreen.getInstance().updateAppearance();
             KeyboardScreen.getInstance().updateAppearance();
             MouseScreen.getInstance().updateAppearance();
             MainScreen.getInstance().updateAppearance();
