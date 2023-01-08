@@ -78,9 +78,13 @@ public abstract class Screen {
         });
     }
 
+    protected void updateAppearance(JComponent component) {
+        for (Component all : component.getComponents()) all.setBackground(getPanel().getBackground());
+    }
+
     protected void updateAppearance() {
         getPanel().setBackground(Settings.getInstance().getTheme().getColor());
-        for (Component component : getPanel().getComponents()) component.setBackground(getPanel().getBackground());
+        updateAppearance(getPanel());
     }
 
     public abstract String getTitle();

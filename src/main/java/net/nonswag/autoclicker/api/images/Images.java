@@ -18,8 +18,8 @@ import java.io.InputStream;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public enum Images {
-    AMERICAN_ENGLISH("images/flags/america.png", 24),
-    GERMAN("images/flags/germany.png", 24),
+    AMERICAN_ENGLISH("images/flags/america.png", 24, 13),
+    GERMAN("images/flags/germany.png", 24, 13),
 
     KEY_SELECTION("images/key-selection.png", 24),
     MOUSE_SELECTION("images/mouse-selection.png", 25),
@@ -39,18 +39,20 @@ public enum Images {
 
     private final String location;
     private final ImageIcon icon;
-    private final int size;
 
     Images(String location, int size) {
-        this.location = location;
-        this.size = size;
-        this.icon = loadIcon();
+        this(location, size, size);
     }
 
-    private ImageIcon loadIcon() throws IllegalStateException {
+    Images(String location, int width, int height) {
+        this.location = location;
+        this.icon = loadIcon(width, height);
+    }
+
+    private ImageIcon loadIcon(int width, int height) throws IllegalStateException {
         InputStream resource = getClass().getClassLoader().getResourceAsStream(getLocation());
         if (resource != null) try {
-            return new ImageIcon(ImageIO.read(resource).getScaledInstance(getSize(), getSize(), Image.SCALE_DEFAULT));
+            return new ImageIcon(ImageIO.read(resource).getScaledInstance(width, height, Image.SCALE_DEFAULT));
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }

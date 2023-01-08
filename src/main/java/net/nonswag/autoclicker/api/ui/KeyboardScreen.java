@@ -8,6 +8,7 @@ import net.nonswag.autoclicker.api.settings.Settings;
 import net.nonswag.autoclicker.utils.Messages;
 import net.nonswag.core.api.language.Language;
 
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -23,22 +24,26 @@ public class KeyboardScreen extends ClickerScreen implements Cloneable {
     @Override
     protected void initKeyButton() {
         key.setText(Messages.BUTTON_SELECTION.message(Settings.getInstance().getLanguage()));
+        key.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         init(key, Images.KEY_SELECTION, () -> {
-            if (locked) return;
-            key.grabFocus();
+            if (clicker.isRunning() || locked) return;
+            key.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            panel.grabFocus();
             power.setVisible(false);
             interval.setVisible(false);
             key.setText(Messages.PRESS_KEYBOARD_BUTTON.message(Settings.getInstance().getLanguage()));
-            key.addKeyListener(new KeyAdapter() {
+            panel.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent event) {
                     if (KeyEvent.CHAR_UNDEFINED == event.getKeyChar()) return;
+                    key.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     getClicker().button(event.getKeyCode());
                     Language language = Settings.getInstance().getLanguage();
                     key.setText(Messages.BUTTON.message(language).formatted(event.getKeyChar()));
-                    key.removeKeyListener(this);
+                    panel.removeKeyListener(this);
                     interval.setVisible(true);
                     power.setVisible(true);
+                    renderInterval(getClicker().interval());
                     locked = false;
                 }
             });

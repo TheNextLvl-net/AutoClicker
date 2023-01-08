@@ -33,6 +33,11 @@ public class Window {
         }
     };
 
+    static {
+        ToolTipManager.sharedInstance().setInitialDelay(500);
+        ToolTipManager.sharedInstance().setReshowDelay(0);
+    }
+
     public static void init(Screen screen) {
         init(screen, true);
     }
@@ -49,6 +54,7 @@ public class Window {
         if (Window.frame == null) frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         Window.frame = frame;
+        screen.getPanel().grabFocus();
         if (!appendHistory) return;
         while (history.size() > historyLocation) history.remove(history.size() - 1);
         while (history.size() >= 5) history.remove(0);

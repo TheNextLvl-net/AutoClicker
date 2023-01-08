@@ -3,6 +3,8 @@ package net.nonswag.autoclicker.api.ui;
 import lombok.Getter;
 import net.nonswag.autoclicker.api.images.Images;
 import net.nonswag.autoclicker.api.robot.Clicker;
+import net.nonswag.autoclicker.api.settings.Settings;
+import net.nonswag.autoclicker.utils.Messages;
 
 import javax.annotation.Nullable;
 import javax.swing.*;
@@ -15,6 +17,9 @@ public abstract class ClickerScreen extends Screen {
     protected JSpinner milliseconds, seconds, minutes;
     protected JLabel power, back, key;
     protected JPanel panel, interval;
+    private JLabel minutesLabel;
+    private JLabel secondsLabel;
+    private JLabel millisLabel;
     protected final Clicker clicker;
     protected boolean locked;
 
@@ -22,7 +27,7 @@ public abstract class ClickerScreen extends Screen {
     private final long maximum = TimeUnit.MINUTES.toMillis(60);
 
     protected ClickerScreen(Clicker clicker) {
-        renderInterval((this.clicker = clicker).interval());
+        this.clicker = clicker;
         initPanel();
         initIntervalPanel();
         initIntervalSpinner();
@@ -32,6 +37,9 @@ public abstract class ClickerScreen extends Screen {
     }
 
     private void initIntervalPanel() {
+        minutesLabel.setText(Messages.MINUTES.message(Settings.getInstance().getLanguage()));
+        secondsLabel.setText(Messages.SECONDS.message(Settings.getInstance().getLanguage()));
+        millisLabel.setText(Messages.MILLISECONDS.message(Settings.getInstance().getLanguage()));
         interval.setBackground(panel.getBackground());
         interval.setVisible(false);
     }
@@ -50,10 +58,9 @@ public abstract class ClickerScreen extends Screen {
     }
 
     private void initSpinner(JSpinner spinner) {
+        spinner.setToolTipText(Messages.SCROLL_TOOL_TIP.message(Settings.getInstance().getLanguage()));
         spinner.setModel(new SpinnerNumberModel());
-        for (Component component : spinner.getEditor().getComponents()) {
-            component.setBackground(panel.getBackground());
-        }
+        updateAppearance(spinner.getEditor());
         spinner.setUI(new BasicSpinnerUI() {
             @Override
             @Nullable
@@ -69,13 +76,13 @@ public abstract class ClickerScreen extends Screen {
         });
         spinner.setBorder(null);
         spinner.addChangeListener(event -> SwingUtilities.invokeLater(() -> {
-            if (!(spinner.getValue() instanceof Number)) return;
+            if (clicker.isRunning() || !(spinner.getValue() instanceof Number)) return;
             long interval = getInterval();
             getClicker().interval(interval);
             renderInterval(interval);
         }));
         spinner.addMouseWheelListener(event -> {
-            if (!(spinner.getValue() instanceof Number value)) return;
+            if (clicker.isRunning() || !(spinner.getValue() instanceof Number value)) return;
             spinner.setValue(value.longValue() - event.getUnitsToScroll());
         });
     }
@@ -92,15 +99,24 @@ public abstract class ClickerScreen extends Screen {
             clicker.setRunning(!clicker.isRunning());
             if (clicker.isRunning()) power.setIcon(Images.POWER_DEACTIVATE.getIcon());
             else power.setIcon(Images.POWER_ACTIVATE.getIcon());
-            updateInterval();
+            updateUIVisibility();
         });
         power.setVisible(false);
     }
 
-    private void updateInterval() {
-        minutes.setVisible(!clicker.isRunning());
-        seconds.setVisible(minutes.isVisible());
-        milliseconds.setVisible(seconds.isVisible());
+    private void updateUIVisibility() {
+        key.setEnabled(!clicker.isRunning());
+        for (Component component : interval.getComponents()) {
+            component.setEnabled(!clicker.isRunning());
+        }
+    }
+
+    @Override
+    protected void updateAppearance() {
+        super.updateAppearance();
+        updateAppearance(minutes.getEditor());
+        updateAppearance(seconds.getEditor());
+        updateAppearance(milliseconds.getEditor());
     }
 
     protected abstract void initKeyButton();

@@ -60,7 +60,7 @@ public class LanguageScreen extends Screen {
     protected void updateAppearance() {
         super.updateAppearance();
         content.setBackground(panel.getBackground());
-        for (Component component : content.getComponents()) component.setBackground(panel.getBackground());
+        updateAppearance(content);
     }
 
     @Override

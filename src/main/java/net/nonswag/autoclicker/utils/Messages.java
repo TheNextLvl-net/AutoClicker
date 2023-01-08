@@ -33,6 +33,7 @@ public class Messages {
     public static final MessageKey SETTINGS_TITLE = new MessageKey("settings-title").register();
     public static final MessageKey LANGUAGE_TITLE = new MessageKey("language-title").register();
     public static final MessageKey CLICK_INTERVAL = new MessageKey("click-interval").register();
+    public static final MessageKey SCROLL_TOOL_TIP = new MessageKey("scroll-tool-tip").register();
     public static final MessageKey BUTTON_SELECTION = new MessageKey("button-selection").register();
     public static final MessageKey PRESS_MOUSE_BUTTON = new MessageKey("press-mouse-button").register();
     public static final MessageKey PRESS_KEYBOARD_BUTTON = new MessageKey("press-keyboard-button").register();
@@ -43,6 +44,11 @@ public class Messages {
     public static final MessageKey LEFT_CLICK = new MessageKey("left-click").register();
     public static final MessageKey RIGHT_CLICK = new MessageKey("right-click").register();
     public static final MessageKey MIDDLE_CLICK = new MessageKey("middle-click").register();
+
+    // time units translations
+    public static final MessageKey MINUTES = new MessageKey("minutes").register();
+    public static final MessageKey SECONDS = new MessageKey("seconds").register();
+    public static final MessageKey MILLISECONDS = new MessageKey("milliseconds").register();
 
     public static void init() {
         initEnglish();
@@ -68,6 +74,7 @@ public class Messages {
         ENGLISH.setDefault(LANGUAGE_TITLE, "Settings - Language");
         ENGLISH.setDefault(SETTINGS_TITLE, "Settings");
         ENGLISH.setDefault(CLICK_INTERVAL, "Click interval");
+        ENGLISH.setDefault(SCROLL_TOOL_TIP, "Scroll to change value");
         ENGLISH.setDefault(BUTTON_SELECTION, "Button selection");
         ENGLISH.setDefault(PRESS_MOUSE_BUTTON, "Press a mouse button");
         ENGLISH.setDefault(PRESS_KEYBOARD_BUTTON, "Press a keyboard button");
@@ -77,6 +84,10 @@ public class Messages {
         ENGLISH.setDefault(LEFT_CLICK, "Left click");
         ENGLISH.setDefault(RIGHT_CLICK, "Right click");
         ENGLISH.setDefault(MIDDLE_CLICK, "Middle click");
+
+        ENGLISH.setDefault(MINUTES, "min.");
+        ENGLISH.setDefault(SECONDS, "sec.");
+        ENGLISH.setDefault(MILLISECONDS, "mil.");
 
         ENGLISH.save();
     }
@@ -100,6 +111,7 @@ public class Messages {
         GERMAN.setDefault(LANGUAGE_TITLE, "Einstellungen - Sprache");
         GERMAN.setDefault(SETTINGS_TITLE, "Einstellungen");
         GERMAN.setDefault(CLICK_INTERVAL, "Klick Intervall");
+        GERMAN.setDefault(SCROLL_TOOL_TIP, "Scrolle um den wert anzupassen");
         GERMAN.setDefault(BUTTON_SELECTION, "Tasten auswahl");
         GERMAN.setDefault(PRESS_MOUSE_BUTTON, "Drücke einen Maustaste");
         GERMAN.setDefault(PRESS_KEYBOARD_BUTTON, "Drücke einen Tastatur Taste");
@@ -109,6 +121,10 @@ public class Messages {
         GERMAN.setDefault(LEFT_CLICK, "Links klick");
         GERMAN.setDefault(RIGHT_CLICK, "Rechts klick");
         GERMAN.setDefault(MIDDLE_CLICK, "Mittel klick");
+
+        GERMAN.setDefault(MINUTES, "min.");
+        GERMAN.setDefault(SECONDS, "sek.");
+        GERMAN.setDefault(MILLISECONDS, "mil.");
 
         GERMAN.save();
     }
