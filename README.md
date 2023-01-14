@@ -15,7 +15,7 @@ This is the first look of the Main Screen
 ![alt text](https://i.imgur.com/aD0Hxqi.png)
 
 
-- Planned features
+# Planned features
 
-executable for windows (`.exe`)<br>
-HotKeys to disable/enable the clicker with a key press
+- executable for windows (`.exe`)<br>
+- HotKeys to disable/enable the clicker with a key press
